@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
 	</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link href="css/style.css" rel="stylesheet" />
+	<link rel="icon" type="image/x-icon" href="{%static 'icon.ico'%}">
 </head>
 
 <body>
@@ -24,10 +25,15 @@
 	{# Display django.contrib.messages as Bootstrap alerts #}
 	{% bootstrap_messages %}
 
-	{%block content%}
-	{%endblock%}
+	{%block content%}{%endblock%}
 
 	{% include 'footer.html' %}
 </body>
+<style>
+	body {
+		padding-top: 100px;
+		background-image: url("{%static 'lemon.jpg'%}");
+	}
+</style>
 
 </html>
