@@ -7,10 +7,34 @@ Sending2u--Home
 
 
 {%block content%}
-<div class="container text-center py-5">
+<div class="container py-2">
 	{% if user.is_authenticated %}
-	Hi {{ user.username }}!
-	{% else %}
+	<div class="row">
+		{%for file in files%}
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<div class="card">
+				<div class="card-header">
+					{{file.filename}}
+				</div>
+				<div class="card-body">
+					<p class="card-text">
+						<span class="badge bg-success">
+							Uploaded Time:{{file.created_time}}
+						</span>
+						<span class="badge bg-warning">
+							File Size:{{ file.raw_data.size | filesizeformat }}
+						</span>
+					</p>
+				</div>
+				<div class="card-body">
+					<a href="{%url 'transport:download' file.id%}" class="btn btn-primary">Download🍉</a>
+					<a href="{%url 'account:signup'%}" class="btn btn-danger">Delete🍊</a>
+				</div>
+			</div>
+		</div>
+		{%endfor%}
+	</div>
+	{%else%}
 	<div class="card mt-5">
 		<div class="card-header">
 			Tips💡
@@ -22,6 +46,6 @@ Sending2u--Home
 			<a href="{%url 'account:signup'%}" class="btn btn-primary">signup🍊</a>
 		</div>
 	</div>
-	{% endif %}
+	{%endif%}
 </div>
 {%endblock%}
