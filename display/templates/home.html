@@ -27,8 +27,10 @@ Sending2u--Home
 					</p>
 				</div>
 				<div class="card-body">
-					<a href="{%url 'transport:download' file.id%}" class="btn btn-primary">Download🍉</a>
-					<a href="{%url 'account:signup'%}" class="btn btn-danger">Delete🍊</a>
+					<a href="{%url 'transport:download' file.id%}" class="btn btn-primary"
+						onmousedown="party.confetti(this)">Download🍉</a>
+					<a href="{%url 'transport:delete' file.id%}" class="btn btn-danger"
+						onmousedown="party.confetti(this)">Delete🍊</a>
 				</div>
 			</div>
 		</div>

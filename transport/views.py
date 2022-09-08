@@ -1,8 +1,10 @@
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.http.response import HttpResponse, Http404, FileResponse
+from django.shortcuts import redirect
+import os
 from .models import File
 from .forms import UploadForm
 
@@ -35,3 +37,15 @@ def download(request, pk: int):
     except:
         raise Http404
     return response
+
+
+def delete(request, pk: int):
+    file = File.objects.filter(pk=pk).first()
+    if file is None:
+        return reverse('display:home')
+    if file.owner != request.user:
+        return reverse('display:home')
+    if os.path.isfile(file.raw_data.path):
+        os.remove(file.raw_data.path)
+    file.delete()
+    return redirect(reverse('display:home'))
