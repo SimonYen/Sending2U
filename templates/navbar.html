@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-light fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">Sending2u🍋</a>
+		<a class="navbar-brand" href="{%url 'display:home'%}" onmousedown="party.confetti(this)">Sending2u🍋</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -8,17 +8,28 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ms-auto mb-3">
 				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="#">🏡主页</a>
+					<a class="nav-link" aria-current="page" href="{%url 'display:home'%}"
+						onmousedown="party.confetti(this)">📄Files</a>
+				</li>
+				{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link" href="{%url 'transport:upload'%}"
+						onmousedown="party.confetti(this)">🛫Upload</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">🛫上传</a>
+					<a class="nav-link" href="#" onmousedown="party.confetti(this)">🛬Download</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">🛬下载</a>
+					<a class="nav-link" href="{%url 'account:logout'%}" onmousedown="party.confetti(this)">😿Log out</a>
+				</li>
+				{%else%}
+				<li class="nav-item">
+					<a class="nav-link" href="{%url 'account:signup'%}" onmousedown="party.confetti(this)">😊Sign up</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">😊注册</a>
+					<a class="nav-link" href="{%url 'account:signin'%}" onmousedown="party.confetti(this)">😍Sign in</a>
 				</li>
+				{%endif%}
 			</ul>
 		</div>
 	</div>

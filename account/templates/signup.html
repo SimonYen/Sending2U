@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Sending2u--SignUp
+{%endblock%}
+
+
+{%block content%}
+{% load django_bootstrap5 %}
+<div class="container mx-auto my-auto py-5 px-5 mx-5">
+	<form method="post" class="form">
+		{% csrf_token %}
+
+		{% bootstrap_form form %}
+		<div class="container text-center">
+			{% bootstrap_button button_type="submit" content="create🔥" %}
+			{% bootstrap_button button_type="reset" content="reset🧊" %}
+		</div>
+
+	</form>
+</div>
+{%endblock%}

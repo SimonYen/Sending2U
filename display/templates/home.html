@@ -2,12 +2,26 @@
 {%load static%}
 
 {%block title%}
-Sending2u--主页
+Sending2u--Home
 {%endblock%}
 
 
 {%block content%}
-<div class="container">
-	hhh
+<div class="container text-center py-5">
+	{% if user.is_authenticated %}
+	Hi {{ user.username }}!
+	{% else %}
+	<div class="card mt-5">
+		<div class="card-header">
+			Tips💡
+		</div>
+		<div class="card-body">
+			<p class="card-text">You are not logged in,you have to logging in so that you can download file or upload
+				file.</p>
+			<a href="{%url 'account:signin'%}" class="btn btn-primary">login🍉</a>
+			<a href="{%url 'account:signup'%}" class="btn btn-primary">signup🍊</a>
+		</div>
+	</div>
+	{% endif %}
 </div>
 {%endblock%}
